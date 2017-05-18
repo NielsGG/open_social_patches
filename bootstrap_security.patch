@@ -1,0 +1,14 @@
+
+diff --git a/src/Plugin/Preprocess/Input.php b/src/Plugin/Preprocess/Input.php
+index 5d56e40..e30c1c2 100644
+--- a/src/Plugin/Preprocess/Input.php
++++ b/src/Plugin/Preprocess/Input.php
+@@ -23,8 +23,6 @@ class Input extends PreprocessBase implements PreprocessInterface {
+    * {@inheritdoc}
+    */
+   public function preprocessElement(Element $element, Variables $variables) {
+-    $element->map(['id', 'name', 'value', 'type']);
+-
+     // Autocomplete.
+     if ($route = $element->getProperty('autocomplete_route_name')) {
+       $variables['autocomplete'] = TRUE;
