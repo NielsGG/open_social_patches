@@ -1,13 +1,13 @@
-commit 4e830505fa08b976685c388fdc36d657930abcb5
+commit bc2d02dae0a0490c4185b61d5e75e709bffea370
 Author: Niels van der Molen <nielsvandermolen@goalgorilla.com>
-Date:   Wed May 31 12:09:02 2017 +0200
+Date:   Wed May 31 12:32:49 2017 +0200
 
-    added patch
+    new patch
 
-diff --git a/profiles/social/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml b/profiles/social/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
+diff --git a/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml b/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
 index c7aa211..153a0d8 100644
---- a/profiles/social/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
-+++ b/profiles/social/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
+--- a/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
++++ b/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
 @@ -20,6 +20,6 @@ settings:
  visibility:
    request_path:
@@ -16,10 +16,10 @@ index c7aa211..153a0d8 100644
 +    pages: "*/enrollments\r\n*/organisers"
      negate: false
      context_mapping: {  }
-diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
+diff --git a/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml b/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
 index de82ac6..7be0540 100644
---- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
-+++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
+--- a/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
++++ b/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
 @@ -8,8 +8,8 @@ id: node.event.field_event_managers
  field_name: field_event_managers
  entity_type: node
@@ -31,10 +31,10 @@ index de82ac6..7be0540 100644
  required: false
  translatable: false
  default_value: {  }
-diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
+diff --git a/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml b/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
 index 27c91d7..351d9b6 100644
---- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
-+++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
+--- a/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
++++ b/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
 @@ -3,14 +3,14 @@ status: true
  dependencies:
    config:
@@ -139,10 +139,10 @@ index 27c91d7..351d9b6 100644
          - 'config:core.entity_view_display.profile.profile.default'
          - 'config:core.entity_view_display.profile.profile.hero'
          - 'config:core.entity_view_display.profile.profile.search_index'
-diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
+diff --git a/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml b/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
 index 490d8bc..49b4332 100644
---- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
-+++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
+--- a/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
++++ b/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
 @@ -10,16 +10,16 @@ dependencies:
      - socialbase
  id: views_block__managers_event_managers
@@ -163,10 +163,10 @@ index 490d8bc..49b4332 100644
    items_per_page: none
  visibility:
    node_type:
-diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
+diff --git a/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml b/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
 index 9a6a2ec..662d218 100644
---- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
-+++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
+--- a/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
++++ b/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
 @@ -10,7 +10,7 @@ dependencies:
      - socialblue
  id: views_block__managers_event_managers_2
@@ -176,23 +176,23 @@ index 9a6a2ec..662d218 100644
  weight: 0
  provider: null
  plugin: 'views_block:managers-event_managers'
-diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
-index 19d21e3..6793f53 100644
---- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
-+++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
+diff --git a/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml b/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
+index 1d84b9d..8ceae03 100644
+--- a/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
++++ b/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
 @@ -1,6 +1,6 @@
 -name: 'Social Event Managers'
 +name: 'Social Event Organisers'
  type: module
 -description: 'Social Event Managers'
 +description: 'Social Event Organisers'
- # core: 8.x
+ core: 8.x
  package: Social
  dependencies:
-diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module b/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
-index 769ddb8..8f7bd30 100644
---- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
-+++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
+diff --git a/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module b/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
+index 544f1df..7429e8e 100644
+--- a/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
++++ b/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
 @@ -7,7 +7,9 @@
  
  use Drupal\node\Entity\Node;
@@ -202,8 +202,8 @@ index 769ddb8..8f7bd30 100644
 +use Drupal\Core\Access\AccessResult;
  use Drupal\Core\Url;
  use Drupal\social_event_managers\SocialEventManagersAccessHelper;
- 
-@@ -21,12 +23,31 @@ function social_event_managers_preprocess_block(&$variables) {
+ use Drupal\Core\Form\FormStateInterface;
+@@ -22,12 +24,31 @@ function social_event_managers_preprocess_block(&$variables) {
    // Add variables to sidebar blocks
    switch ($variables['elements']['#derivative_plugin_id']) {
      case 'managers-event_managers':
@@ -236,7 +236,7 @@ index 769ddb8..8f7bd30 100644
   * Implements hook_form_FORM_ID_alter().
   */
  function social_event_managers_form_node_event_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
-@@ -63,14 +84,14 @@ function social_event_managers_node_access_records(\Drupal\node\NodeInterface $n
+@@ -64,14 +85,14 @@ function social_event_managers_node_access_records(\Drupal\node\NodeInterface $n
    if ($node->getType() === 'event') {
  
      // Event organizers should be granted access.
@@ -254,7 +254,7 @@ index 769ddb8..8f7bd30 100644
              'gid' => $eventmanager['target_id'],
              'grant_view' => 1,
              'grant_update' => 1,
-@@ -96,7 +117,7 @@ function social_event_managers_node_grants(\Drupal\Core\Session\AccountInterface
+@@ -97,7 +118,7 @@ function social_event_managers_node_grants(\Drupal\Core\Session\AccountInterface
    $query->fields('em', ['entity_id']);
    $query->condition('em.field_event_managers_target_id', $account->id());
    // Add grants.
@@ -263,11 +263,11 @@ index 769ddb8..8f7bd30 100644
      $grants['social_event_managers:' . $nid->entity_id][] = $account->id();
    }
  
-diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php b/profiles/social/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
+diff --git a/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php b/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
 index 56ae2c1..a6f3b5d 100644
---- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
-+++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
-@@ -29,10 +29,10 @@ public function loadOverrides($names) {
+--- a/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
++++ b/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
+@@ -29,10 +29,10 @@ class SocialEventManagersConfigOverride implements ConfigFactoryOverrideInterfac
          ],
          'parent_name' => '',
          'weight' => 9,
@@ -280,11 +280,11 @@ index 56ae2c1..a6f3b5d 100644
            'id' => 'event-managers',
            'classes' => 'card',
            'required_fields' => FALSE,
-diff --git a/profiles/social/modules/social_features/social_group/config/install/views.view.group_managers.yml b/profiles/social/modules/social_features/social_group/config/install/views.view.group_managers.yml
+diff --git a/modules/social_features/social_group/config/install/views.view.group_managers.yml b/modules/social_features/social_group/config/install/views.view.group_managers.yml
 new file mode 100644
 index 0000000..045d5e2
 --- /dev/null
-+++ b/profiles/social/modules/social_features/social_group/config/install/views.view.group_managers.yml
++++ b/modules/social_features/social_group/config/install/views.view.group_managers.yml
 @@ -0,0 +1,275 @@
 +langcode: en
 +status: true
@@ -561,11 +561,11 @@ index 0000000..045d5e2
 +        - 'config:core.entity_view_display.profile.profile.small_teaser'
 +        - 'config:core.entity_view_display.profile.profile.table'
 +        - 'config:core.entity_view_display.profile.profile.teaser'
-diff --git a/profiles/social/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml b/profiles/social/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml
+diff --git a/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml b/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml
 new file mode 100644
 index 0000000..08c555e
 --- /dev/null
-+++ b/profiles/social/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml
++++ b/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml
 @@ -0,0 +1,37 @@
 +langcode: en
 +status: true
@@ -604,10 +604,10 @@ index 0000000..08c555e
 +    pages: '/group/*/about'
 +    negate: false
 +    context_mapping: {  }
-diff --git a/profiles/social/modules/social_features/social_group/social_group.info.yml b/profiles/social/modules/social_features/social_group/social_group.info.yml
-index e94f314..4cf52f7 100644
---- a/profiles/social/modules/social_features/social_group/social_group.info.yml
-+++ b/profiles/social/modules/social_features/social_group/social_group.info.yml
+diff --git a/modules/social_features/social_group/social_group.info.yml b/modules/social_features/social_group/social_group.info.yml
+index 8a16043..62099bd 100644
+--- a/modules/social_features/social_group/social_group.info.yml
++++ b/modules/social_features/social_group/social_group.info.yml
 @@ -16,9 +16,11 @@ dependencies:
    - image_widget_crop
    - node
@@ -620,11 +620,11 @@ index e94f314..4cf52f7 100644
    - social_topic
    - system
    - taxonomy
-diff --git a/profiles/social/modules/social_features/social_group/social_group.module b/profiles/social/modules/social_features/social_group/social_group.module
-index 449e76f..9f4f825 100644
---- a/profiles/social/modules/social_features/social_group/social_group.module
-+++ b/profiles/social/modules/social_features/social_group/social_group.module
-@@ -571,3 +571,29 @@ function _social_group_cache_tags(GroupInterface $group) {
+diff --git a/modules/social_features/social_group/social_group.module b/modules/social_features/social_group/social_group.module
+index 449e76f..0a63570 100644
+--- a/modules/social_features/social_group/social_group.module
++++ b/modules/social_features/social_group/social_group.module
+@@ -571,3 +571,55 @@ function _social_group_cache_tags(GroupInterface $group) {
  function social_group_block_view_local_tasks_block_alter(array &$build, BlockPluginInterface $block) {
    $build['#cache']['contexts'][] = 'group_membership.roles.permissions';
  }
@@ -654,11 +654,37 @@ index 449e76f..9f4f825 100644
 +    }
 +  }
 +}
-diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml
++
++/**
++ * Implements hook_preprocess_HOOK().
++ */
++function social_group_preprocess_profile(&$variables) {
++  $group = _social_group_get_current_group();
++
++  if ($group instanceof Group && $variables['elements']['#view_mode'] == 'teaser') {
++    $account = $variables['elements']['#profile']->get('uid')->entity;
++
++    if (!$member = $group->getMember($account)) {
++      return;
++    }
++
++    $roles = $member->getRoles();
++
++    if (isset($roles[ $group->bundle() . '-group_manager' ])) {
++      $variables['badges'] = [
++        [
++          'label' => t('Group manager'),
++          'classes' => ['badge-secondary teaser__badge'],
++        ],
++      ];
++    }
++  }
++}
+diff --git a/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml b/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml
 new file mode 100644
 index 0000000..9721b4e
 --- /dev/null
-+++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml
++++ b/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml
 @@ -0,0 +1,58 @@
 +langcode: en
 +status: true
@@ -718,10 +744,10 @@ index 0000000..9721b4e
 +  field_profile_profile_tag: true
 +  field_profile_self_introduction: true
 +  field_profile_show_email: true
-diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
+diff --git a/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml b/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
 index 22e9b0e..0d2634b 100644
---- a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
-+++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
+--- a/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
++++ b/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
 @@ -4,6 +4,6 @@ dependencies:
    module:
      - profile
@@ -730,11 +756,11 @@ index 22e9b0e..0d2634b 100644
 +label: 'Compact Avatar'
  targetEntityType: profile
  cache: true
-diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml
+diff --git a/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml b/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml
 new file mode 100644
 index 0000000..1fa04e8
 --- /dev/null
-+++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml
++++ b/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml
 @@ -0,0 +1,10 @@
 +uuid: eeb521be-1fda-433c-a7b4-ef4f615a3f39
 +langcode: en
@@ -746,10 +772,10 @@ index 0000000..1fa04e8
 +label: 'Compact Teaser'
 +targetEntityType: profile
 +cache: true
-diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
+diff --git a/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml b/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
 index 57eadc5..6a87675 100644
---- a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
-+++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
+--- a/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
++++ b/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
 @@ -4,6 +4,6 @@ dependencies:
    module:
      - profile
@@ -758,10 +784,10 @@ index 57eadc5..6a87675 100644
 +label: 'Small Avatar'
  targetEntityType: profile
  cache: true
-diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
+diff --git a/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml b/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
 index 2ced97b..c46a828 100644
---- a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
-+++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
+--- a/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
++++ b/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
 @@ -4,6 +4,6 @@ dependencies:
    module:
      - profile
@@ -770,10 +796,10 @@ index 2ced97b..c46a828 100644
 +label: 'Small Teaser'
  targetEntityType: profile
  cache: true
-diff --git a/profiles/social/tests/behat/features/capabilities/event-management/event-management.feature b/profiles/social/tests/behat/features/capabilities/event-management/event-management.feature
+diff --git a/tests/behat/features/capabilities/event-management/event-management.feature b/tests/behat/features/capabilities/event-management/event-management.feature
 index b0fca3a..7bf5707 100644
---- a/profiles/social/tests/behat/features/capabilities/event-management/event-management.feature
-+++ b/profiles/social/tests/behat/features/capabilities/event-management/event-management.feature
+--- a/tests/behat/features/capabilities/event-management/event-management.feature
++++ b/tests/behat/features/capabilities/event-management/event-management.feature
 @@ -2,35 +2,35 @@
  Feature: Event Management
    Benefit: In order to organise an event
@@ -880,11 +906,11 @@ index b0fca3a..7bf5707 100644
      And I open the "topic" node with title "Topic regression test"
 -    Then I should not see the link "Managers"
 +    Then I should not see "Organisers"
-diff --git a/profiles/social/themes/socialbase/assets/css/group-managers.css b/profiles/social/themes/socialbase/assets/css/group-managers.css
+diff --git a/themes/socialbase/assets/css/group-managers.css b/themes/socialbase/assets/css/group-managers.css
 new file mode 100644
 index 0000000..a7101df
 --- /dev/null
-+++ b/profiles/social/themes/socialbase/assets/css/group-managers.css
++++ b/themes/socialbase/assets/css/group-managers.css
 @@ -0,0 +1,21 @@
 +.view--group-managers .card__block {
 +  padding: 0;
@@ -907,10 +933,10 @@ index 0000000..a7101df
 +    flex: 0 0 48%;
 +  }
 +}
-diff --git a/profiles/social/themes/socialbase/assets/css/list.css b/profiles/social/themes/socialbase/assets/css/list.css
+diff --git a/themes/socialbase/assets/css/list.css b/themes/socialbase/assets/css/list.css
 index 8efee72..eae6911 100644
---- a/profiles/social/themes/socialbase/assets/css/list.css
-+++ b/profiles/social/themes/socialbase/assets/css/list.css
+--- a/themes/socialbase/assets/css/list.css
++++ b/themes/socialbase/assets/css/list.css
 @@ -5,12 +5,10 @@
    -webkit-box-pack: center;
        -ms-flex-pack: center;
@@ -946,10 +972,10 @@ index 8efee72..eae6911 100644
  }
  
  .list-item__text p {
-diff --git a/profiles/social/themes/socialbase/assets/css/meta.css b/profiles/social/themes/socialbase/assets/css/meta.css
+diff --git a/themes/socialbase/assets/css/meta.css b/themes/socialbase/assets/css/meta.css
 index 98b4019..a16642e 100644
---- a/profiles/social/themes/socialbase/assets/css/meta.css
-+++ b/profiles/social/themes/socialbase/assets/css/meta.css
+--- a/themes/socialbase/assets/css/meta.css
++++ b/themes/socialbase/assets/css/meta.css
 @@ -115,8 +115,8 @@
    }
  
@@ -961,10 +987,10 @@ index 98b4019..a16642e 100644
      -webkit-box-ordinal-group: 11;
      -ms-flex-order: 10;
      order: 10;
-diff --git a/profiles/social/themes/socialbase/assets/css/teaser.css b/profiles/social/themes/socialbase/assets/css/teaser.css
+diff --git a/themes/socialbase/assets/css/teaser.css b/themes/socialbase/assets/css/teaser.css
 index 3f66e60..fdf20f6 100644
---- a/profiles/social/themes/socialbase/assets/css/teaser.css
-+++ b/profiles/social/themes/socialbase/assets/css/teaser.css
+--- a/themes/socialbase/assets/css/teaser.css
++++ b/themes/socialbase/assets/css/teaser.css
 @@ -62,10 +62,9 @@
  }
  
@@ -1044,10 +1070,10 @@ index 3f66e60..fdf20f6 100644
  }
  
  .teaser__badge {
-diff --git a/profiles/social/themes/socialbase/components/02-atoms/list/list.scss b/profiles/social/themes/socialbase/components/02-atoms/list/list.scss
+diff --git a/themes/socialbase/components/02-atoms/list/list.scss b/themes/socialbase/components/02-atoms/list/list.scss
 index e784a77..64dac89 100644
---- a/profiles/social/themes/socialbase/components/02-atoms/list/list.scss
-+++ b/profiles/social/themes/socialbase/components/02-atoms/list/list.scss
+--- a/themes/socialbase/components/02-atoms/list/list.scss
++++ b/themes/socialbase/components/02-atoms/list/list.scss
 @@ -37,10 +37,10 @@
  .list-item {
    display: flex;
@@ -1079,10 +1105,10 @@ index e784a77..64dac89 100644
  
    p {
      margin-bottom: 0;
-diff --git a/profiles/social/themes/socialbase/components/03-molecules/teaser/teaser.scss b/profiles/social/themes/socialbase/components/03-molecules/teaser/teaser.scss
+diff --git a/themes/socialbase/components/03-molecules/teaser/teaser.scss b/themes/socialbase/components/03-molecules/teaser/teaser.scss
 index c6db5be..0ba1c29 100644
---- a/profiles/social/themes/socialbase/components/03-molecules/teaser/teaser.scss
-+++ b/profiles/social/themes/socialbase/components/03-molecules/teaser/teaser.scss
+--- a/themes/socialbase/components/03-molecules/teaser/teaser.scss
++++ b/themes/socialbase/components/03-molecules/teaser/teaser.scss
 @@ -115,12 +115,9 @@
    position: relative;
  }
@@ -1156,11 +1182,11 @@ index c6db5be..0ba1c29 100644
  }
  
  // Reset margin so the items in the actionbar are vertically aligned.
-diff --git a/profiles/social/themes/socialbase/components/04-organisms/group/group-managers.scss b/profiles/social/themes/socialbase/components/04-organisms/group/group-managers.scss
+diff --git a/themes/socialbase/components/04-organisms/group/group-managers.scss b/themes/socialbase/components/04-organisms/group/group-managers.scss
 new file mode 100644
 index 0000000..7047e51
 --- /dev/null
-+++ b/profiles/social/themes/socialbase/components/04-organisms/group/group-managers.scss
++++ b/themes/socialbase/components/04-organisms/group/group-managers.scss
 @@ -0,0 +1,19 @@
 +@import 'settings';
 +
@@ -1182,10 +1208,10 @@ index 0000000..7047e51
 +
 +}
 \ No newline at end of file
-diff --git a/profiles/social/themes/socialbase/components/04-organisms/meta/meta.scss b/profiles/social/themes/socialbase/components/04-organisms/meta/meta.scss
+diff --git a/themes/socialbase/components/04-organisms/meta/meta.scss b/themes/socialbase/components/04-organisms/meta/meta.scss
 index 232b829..8c83a62 100644
---- a/profiles/social/themes/socialbase/components/04-organisms/meta/meta.scss
-+++ b/profiles/social/themes/socialbase/components/04-organisms/meta/meta.scss
+--- a/themes/socialbase/components/04-organisms/meta/meta.scss
++++ b/themes/socialbase/components/04-organisms/meta/meta.scss
 @@ -72,7 +72,7 @@
    margin-bottom: 1rem;
  
@@ -1195,10 +1221,10 @@ index 232b829..8c83a62 100644
      order: 10;
      margin-bottom: 0;
    }
-diff --git a/profiles/social/themes/socialbase/includes/block.inc b/profiles/social/themes/socialbase/includes/block.inc
+diff --git a/themes/socialbase/includes/block.inc b/themes/socialbase/includes/block.inc
 index 58f71cb..868862b 100644
---- a/profiles/social/themes/socialbase/includes/block.inc
-+++ b/profiles/social/themes/socialbase/includes/block.inc
+--- a/themes/socialbase/includes/block.inc
++++ b/themes/socialbase/includes/block.inc
 @@ -92,6 +92,10 @@ function socialbase_preprocess_block(&$variables) {
  
    }
@@ -1210,10 +1236,10 @@ index 58f71cb..868862b 100644
    // for all platform_intro blocks we want them to appear as cards.
    if (isset($variables['elements']['content']['#block_content'])) {
      if ($variables['elements']['content']['#block_content']->bundle() == 'platform_intro') {
-diff --git a/profiles/social/themes/socialbase/includes/input.inc b/profiles/social/themes/socialbase/includes/input.inc
+diff --git a/themes/socialbase/includes/input.inc b/themes/socialbase/includes/input.inc
 index 8ea77c3..a15cdb9 100644
---- a/profiles/social/themes/socialbase/includes/input.inc
-+++ b/profiles/social/themes/socialbase/includes/input.inc
+--- a/themes/socialbase/includes/input.inc
++++ b/themes/socialbase/includes/input.inc
 @@ -18,6 +18,11 @@ function socialbase_preprocess_input(&$variables) {
      }
    }
@@ -1226,10 +1252,10 @@ index 8ea77c3..a15cdb9 100644
    if (isset($variables['element']['#array_parents'])) {
      if (in_array('save_modal', $variables['element']['#array_parents'], TRUE)) {
        $variables['button_type'] = 'primary';
-diff --git a/profiles/social/themes/socialbase/includes/views.inc b/profiles/social/themes/socialbase/includes/views.inc
+diff --git a/themes/socialbase/includes/views.inc b/themes/socialbase/includes/views.inc
 index 4f8e527..c15bb1f 100644
---- a/profiles/social/themes/socialbase/includes/views.inc
-+++ b/profiles/social/themes/socialbase/includes/views.inc
+--- a/themes/socialbase/includes/views.inc
++++ b/themes/socialbase/includes/views.inc
 @@ -31,4 +31,8 @@ function socialbase_theme_suggestions_views_view_alter(array &$suggestions, arra
    ) {
      $suggestions[] = $variables['theme_hook_original'] . '__stream';
@@ -1239,10 +1265,10 @@ index 4f8e527..c15bb1f 100644
 +    $suggestions[] = $variables['theme_hook_original'] . '__group_managers';
 +  }
  }
-diff --git a/profiles/social/themes/socialbase/socialbase.libraries.yml b/profiles/social/themes/socialbase/socialbase.libraries.yml
+diff --git a/themes/socialbase/socialbase.libraries.yml b/themes/socialbase/socialbase.libraries.yml
 index 23262d0..61323a3 100644
---- a/profiles/social/themes/socialbase/socialbase.libraries.yml
-+++ b/profiles/social/themes/socialbase/socialbase.libraries.yml
+--- a/themes/socialbase/socialbase.libraries.yml
++++ b/themes/socialbase/socialbase.libraries.yml
 @@ -210,6 +210,11 @@ comment:
      component:
        assets/css/comment.css: {}
@@ -1255,19 +1281,19 @@ index 23262d0..61323a3 100644
  hero:
    css:
      component:
-diff --git a/profiles/social/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig b/profiles/social/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig
+diff --git a/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig b/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig
 new file mode 100644
 index 0000000..e816076
 --- /dev/null
-+++ b/profiles/social/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig
++++ b/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig
 @@ -0,0 +1,2 @@
 +{% extends "block--card.html.twig" %}
 +{% set title_attributes = title_attributes.addClass('align-center') %}
 \ No newline at end of file
-diff --git a/profiles/social/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig b/profiles/social/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
+diff --git a/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig b/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
 index a76802f..7d062b6 100644
---- a/profiles/social/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
-+++ b/profiles/social/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
+--- a/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
++++ b/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
 @@ -16,8 +16,8 @@
      {%- block field_icon -%} account_circle {%- endblock -%}
      {%- block field_value %}
@@ -1278,11 +1304,11 @@ index a76802f..7d062b6 100644
        </div>
      {%- endblock -%}
    {% endembed %}
-diff --git a/profiles/social/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig b/profiles/social/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig
+diff --git a/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig b/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig
 new file mode 100644
 index 0000000..bf355f5
 --- /dev/null
-+++ b/profiles/social/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig
++++ b/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig
 @@ -0,0 +1,43 @@
 +{#
 +/**
@@ -1327,11 +1353,11 @@ index 0000000..bf355f5
 +
 +  </div>
 +</div>
-diff --git a/profiles/social/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig b/profiles/social/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig
+diff --git a/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig b/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig
 new file mode 100644
 index 0000000..b916405
 --- /dev/null
-+++ b/profiles/social/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig
++++ b/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig
 @@ -0,0 +1,45 @@
 +{#
 +/**
@@ -1378,10 +1404,10 @@ index 0000000..b916405
 +  </div>
 +
 +</div>
-diff --git a/profiles/social/themes/socialbase/templates/profile/profile--profile--teaser.html.twig b/profiles/social/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
+diff --git a/themes/socialbase/templates/profile/profile--profile--teaser.html.twig b/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
 index fa63f0b..f7a160d 100644
---- a/profiles/social/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
-+++ b/profiles/social/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
+--- a/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
++++ b/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
 @@ -48,11 +48,18 @@
          </div>
          {% endif %}
@@ -1405,11 +1431,11 @@ index fa63f0b..f7a160d 100644
      </div>
  
      <div class="card__actionbar">
-diff --git a/profiles/social/themes/socialbase/templates/views/views-view--group-managers.html.twig b/profiles/social/themes/socialbase/templates/views/views-view--group-managers.html.twig
+diff --git a/themes/socialbase/templates/views/views-view--group-managers.html.twig b/themes/socialbase/templates/views/views-view--group-managers.html.twig
 new file mode 100644
 index 0000000..736a5ff
 --- /dev/null
-+++ b/profiles/social/themes/socialbase/templates/views/views-view--group-managers.html.twig
++++ b/themes/socialbase/templates/views/views-view--group-managers.html.twig
 @@ -0,0 +1,23 @@
 +{#
 +/**
