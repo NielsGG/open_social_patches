@@ -654,32 +654,6 @@ index 449e76f..0a63570 100644
 +    }
 +  }
 +}
-+
-+/**
-+ * Implements hook_preprocess_HOOK().
-+ */
-+function social_group_preprocess_profile(&$variables) {
-+  $group = _social_group_get_current_group();
-+
-+  if ($group instanceof Group && $variables['elements']['#view_mode'] == 'teaser') {
-+    $account = $variables['elements']['#profile']->get('uid')->entity;
-+
-+    if (!$member = $group->getMember($account)) {
-+      return;
-+    }
-+
-+    $roles = $member->getRoles();
-+
-+    if (isset($roles[ $group->bundle() . '-group_manager' ])) {
-+      $variables['badges'] = [
-+        [
-+          'label' => t('Group manager'),
-+          'classes' => ['badge-secondary teaser__badge'],
-+        ],
-+      ];
-+    }
-+  }
-+}
 diff --git a/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml b/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml
 new file mode 100644
 index 0000000..9721b4e
