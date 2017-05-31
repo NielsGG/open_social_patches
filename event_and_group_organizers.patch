@@ -1,8 +1,8 @@
-commit bc2d02dae0a0490c4185b61d5e75e709bffea370
+commit 135ccfb5be85d03bf1056f954f54025112e5ac6c
 Author: Niels van der Molen <nielsvandermolen@goalgorilla.com>
-Date:   Wed May 31 12:32:49 2017 +0200
+Date:   Wed May 31 12:51:13 2017 +0200
 
-    new patch
+    patch
 
 diff --git a/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml b/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
 index c7aa211..153a0d8 100644
@@ -621,10 +621,10 @@ index 8a16043..62099bd 100644
    - system
    - taxonomy
 diff --git a/modules/social_features/social_group/social_group.module b/modules/social_features/social_group/social_group.module
-index 449e76f..0a63570 100644
+index 449e76f..9f4f825 100644
 --- a/modules/social_features/social_group/social_group.module
 +++ b/modules/social_features/social_group/social_group.module
-@@ -571,3 +571,55 @@ function _social_group_cache_tags(GroupInterface $group) {
+@@ -571,3 +571,29 @@ function _social_group_cache_tags(GroupInterface $group) {
  function social_group_block_view_local_tasks_block_alter(array &$build, BlockPluginInterface $block) {
    $build['#cache']['contexts'][] = 'group_membership.roles.permissions';
  }
