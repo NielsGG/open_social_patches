@@ -1,0 +1,1436 @@
+commit 4e830505fa08b976685c388fdc36d657930abcb5
+Author: Niels van der Molen <nielsvandermolen@goalgorilla.com>
+Date:   Wed May 31 12:09:02 2017 +0200
+
+    added patch
+
+diff --git a/profiles/social/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml b/profiles/social/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
+index c7aa211..153a0d8 100644
+--- a/profiles/social/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
++++ b/profiles/social/modules/social_features/social_core/config/optional/block.block.socialblue_pagetitleblock_2.yml
+@@ -20,6 +20,6 @@ settings:
+ visibility:
+   request_path:
+     id: request_path
+-    pages: "*/enrollments\r\n*/managers"
++    pages: "*/enrollments\r\n*/organisers"
+     negate: false
+     context_mapping: {  }
+diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
+index de82ac6..7be0540 100644
+--- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
++++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/field.field.node.event.field_event_managers.yml
+@@ -8,8 +8,8 @@ id: node.event.field_event_managers
+ field_name: field_event_managers
+ entity_type: node
+ bundle: event
+-label: 'Event managers'
+-description: 'Assign event managers to this event.'
++label: 'Event organisers'
++description: 'Assign event organisers to this event.'
+ required: false
+ translatable: false
+ default_value: {  }
+diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
+index 27c91d7..351d9b6 100644
+--- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
++++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/install/views.view.managers.yml
+@@ -3,14 +3,14 @@ status: true
+ dependencies:
+   config:
+     - core.entity_view_mode.profile.compact
+-    - core.entity_view_mode.profile.small_teaser
++    - core.entity_view_mode.profile.compact_teaser
+     - core.entity_view_mode.profile.teaser
+   module:
+     - node
+     - profile
+     - user
+ id: managers
+-label: 'Event managers'
++label: 'Event organisers'
+ module: views
+ description: ''
+ tag: ''
+@@ -129,7 +129,7 @@ display:
+           view_mode: default
+       filters: {  }
+       sorts: {  }
+-      title: Managers
++      title: Organisers
+       header: {  }
+       footer: {  }
+       empty:
+@@ -142,7 +142,7 @@ display:
+           admin_label: ''
+           empty: true
+           tokenize: false
+-          content: 'We could not find any event managers for this event.'
++          content: 'We could not find any event organisers for this event.'
+           plugin_id: text_custom
+       relationships:
+         uid:
+@@ -216,6 +216,7 @@ display:
+       tags:
+         - 'config:core.entity_view_display.profile.profile.autocomplete_item'
+         - 'config:core.entity_view_display.profile.profile.compact'
++        - 'config:core.entity_view_display.profile.profile.compact_teaser'
+         - 'config:core.entity_view_display.profile.profile.default'
+         - 'config:core.entity_view_display.profile.profile.hero'
+         - 'config:core.entity_view_display.profile.profile.search_index'
+@@ -230,7 +231,7 @@ display:
+     position: 2
+     display_options:
+       display_extenders: {  }
+-      block_description: 'Managers Block'
++      block_description: 'Organisers Block'
+       footer: {  }
+       defaults:
+         footer: false
+@@ -251,11 +252,11 @@ display:
+         type: 'entity:profile'
+         options:
+           relationship: none
+-          view_mode: small_teaser
++          view_mode: compact_teaser
+       pager:
+         type: some
+         options:
+-          items_per_page: 2
++          items_per_page: 10
+           offset: 0
+       arguments:
+         nid:
+@@ -298,7 +299,7 @@ display:
+       link_url: ''
+       use_more: false
+       use_more_always: false
+-      use_more_text: 'See all managers'
++      use_more_text: 'See all organisers'
+       block_hide_empty: true
+       empty: {  }
+     cache_metadata:
+@@ -310,6 +311,7 @@ display:
+       tags:
+         - 'config:core.entity_view_display.profile.profile.autocomplete_item'
+         - 'config:core.entity_view_display.profile.profile.compact'
++        - 'config:core.entity_view_display.profile.profile.compact_teaser'
+         - 'config:core.entity_view_display.profile.profile.default'
+         - 'config:core.entity_view_display.profile.profile.hero'
+         - 'config:core.entity_view_display.profile.profile.search_index'
+@@ -324,10 +326,10 @@ display:
+     position: 1
+     display_options:
+       display_extenders: {  }
+-      path: node/%node/managers
++      path: node/%node/organisers
+       menu:
+         type: tab
+-        title: Managers
++        title: Organisers
+         description: ''
+         expanded: false
+         parent: ''
+@@ -377,6 +379,7 @@ display:
+       tags:
+         - 'config:core.entity_view_display.profile.profile.autocomplete_item'
+         - 'config:core.entity_view_display.profile.profile.compact'
++        - 'config:core.entity_view_display.profile.profile.compact_teaser'
+         - 'config:core.entity_view_display.profile.profile.default'
+         - 'config:core.entity_view_display.profile.profile.hero'
+         - 'config:core.entity_view_display.profile.profile.search_index'
+diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
+index 490d8bc..49b4332 100644
+--- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
++++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers.yml
+@@ -10,16 +10,16 @@ dependencies:
+     - socialbase
+ id: views_block__managers_event_managers
+ theme: socialbase
+-region: complementary_top
++region: complementary_bottom
+ weight: 0
+ provider: null
+ plugin: 'views_block:managers-event_managers'
+ settings:
+   id: 'views_block:managers-event_managers'
+-  label: 'Event Managers'
++  label: 'Event Organisers'
+   provider: views
+   label_display: visible
+-  views_label: 'Event Managers'
++  views_label: 'Event Organisers'
+   items_per_page: none
+ visibility:
+   node_type:
+diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
+index 9a6a2ec..662d218 100644
+--- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
++++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/config/optional/block.block.views_block__managers_event_managers_2.yml
+@@ -10,7 +10,7 @@ dependencies:
+     - socialblue
+ id: views_block__managers_event_managers_2
+ theme: socialblue
+-region: complementary_top
++region: complementary_bottom
+ weight: 0
+ provider: null
+ plugin: 'views_block:managers-event_managers'
+diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml b/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
+index 19d21e3..6793f53 100644
+--- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
++++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.info.yml
+@@ -1,6 +1,6 @@
+-name: 'Social Event Managers'
++name: 'Social Event Organisers'
+ type: module
+-description: 'Social Event Managers'
++description: 'Social Event Organisers'
+ # core: 8.x
+ package: Social
+ dependencies:
+diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module b/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
+index 769ddb8..8f7bd30 100644
+--- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
++++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/social_event_managers.module
+@@ -7,7 +7,9 @@
+ 
+ use Drupal\node\Entity\Node;
+ use Drupal\node\NodeInterface;
++use Drupal\block\Entity\Block;
+ use Drupal\Core\Session\AccountInterface;
++use Drupal\Core\Access\AccessResult;
+ use Drupal\Core\Url;
+ use Drupal\social_event_managers\SocialEventManagersAccessHelper;
+ 
+@@ -21,12 +23,31 @@ function social_event_managers_preprocess_block(&$variables) {
+   // Add variables to sidebar blocks
+   switch ($variables['elements']['#derivative_plugin_id']) {
+     case 'managers-event_managers':
+-      $variables['view_all_path'] = Url::fromUserInput('/node/' . $node->id() . '/managers');
++      // Show "All" button only when there are more than 10 organisers.
++      if ($node->field_event_managers->count() > 10) {
++        $variables['view_all_path'] = Url::fromUserInput('/node/' . $node->id() . '/organisers');
++        $variables['button_text'] = t('All ') . $variables['label']['#markup'];
++      }
+       break;
+   }
+ }
+ 
+ /**
++ *  Implements hook_block_access().
++ */
++function social_event_managers_block_access(Block $block, $operation, AccountInterface $account) {
++  if ($operation == 'view' && $block->getPluginId() == 'views_block:managers-event_managers') {
++    // Exclude block form edit node page.
++    $route_name = \Drupal::routeMatch()->getRouteName();
++    if ($route_name == 'entity.node.edit_form') {
++      return AccessResult::forbidden();
++    }
++  }
++  // No opinion for other situations really.
++  return AccessResult::neutral();
++}
++
++/**
+  * Implements hook_form_FORM_ID_alter().
+  */
+ function social_event_managers_form_node_event_edit_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+@@ -63,14 +84,14 @@ function social_event_managers_node_access_records(\Drupal\node\NodeInterface $n
+   if ($node->getType() === 'event') {
+ 
+     // Event organizers should be granted access.
+-    foreach($node->get('field_event_managers')->getValue() as $eventmanager) {
++    foreach ($node->get('field_event_managers')->getValue() as $eventmanager) {
+       // Load the event managers account.
+       if ($account = \Drupal\user\Entity\User::load($eventmanager['target_id'])) {
+         // Event organizers must have access to view the record in the first place.
+-        if ($node->access('view',$account)) {
++        if ($node->access('view', $account)) {
+           // Add grant.
+           $grants[] = array(
+-            'realm' => 'social_event_managers:'.$node->id(),
++            'realm' => 'social_event_managers:' . $node->id(),
+             'gid' => $eventmanager['target_id'],
+             'grant_view' => 1,
+             'grant_update' => 1,
+@@ -96,7 +117,7 @@ function social_event_managers_node_grants(\Drupal\Core\Session\AccountInterface
+   $query->fields('em', ['entity_id']);
+   $query->condition('em.field_event_managers_target_id', $account->id());
+   // Add grants.
+-  foreach($query->execute()->fetchAllAssoc('entity_id') as $nid) {
++  foreach ($query->execute()->fetchAllAssoc('entity_id') as $nid) {
+     $grants['social_event_managers:' . $nid->entity_id][] = $account->id();
+   }
+ 
+diff --git a/profiles/social/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php b/profiles/social/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
+index 56ae2c1..a6f3b5d 100644
+--- a/profiles/social/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
++++ b/profiles/social/modules/social_features/social_event/modules/social_event_managers/src/SocialEventManagersConfigOverride.php
+@@ -29,10 +29,10 @@ public function loadOverrides($names) {
+         ],
+         'parent_name' => '',
+         'weight' => 9,
+-        'label' => 'Event managers',
++        'label' => 'Event organisers',
+         'format_type' =>  'fieldset',
+         'format_settings' => [
+-          'label' => 'Event managers',
++          'label' => 'Event organisers',
+           'id' => 'event-managers',
+           'classes' => 'card',
+           'required_fields' => FALSE,
+diff --git a/profiles/social/modules/social_features/social_group/config/install/views.view.group_managers.yml b/profiles/social/modules/social_features/social_group/config/install/views.view.group_managers.yml
+new file mode 100644
+index 0000000..045d5e2
+--- /dev/null
++++ b/profiles/social/modules/social_features/social_group/config/install/views.view.group_managers.yml
+@@ -0,0 +1,275 @@
++langcode: en
++status: true
++dependencies:
++  config:
++    - core.entity_view_mode.profile.compact_teaser
++    - profile.type.profile
++  module:
++    - group
++    - profile
++    - user
++id: group_managers
++label: 'Group Managers'
++module: views
++description: ''
++tag: ''
++base_table: profile
++base_field: profile_id
++core: 8.x
++display:
++  default:
++    display_plugin: default
++    id: default
++    display_title: Master
++    position: 0
++    display_options:
++      access:
++        type: group_permission
++        options:
++          group_permission: 'view group'
++      cache:
++        type: tag
++        options: {  }
++      query:
++        type: views_query
++        options:
++          disable_sql_rewrite: false
++          distinct: true
++          replica: false
++          query_comment: ''
++          query_tags: {  }
++      exposed_form:
++        type: basic
++        options:
++          submit_button: Apply
++          reset_button: false
++          reset_button_label: Reset
++          exposed_sorts_label: 'Sort by'
++          expose_sort_order: true
++          sort_asc_label: Asc
++          sort_desc_label: Desc
++      pager:
++        type: none
++        options:
++          offset: 0
++      style:
++        type: default
++        options:
++          grouping: {  }
++          row_class: ''
++          default_row_class: true
++          uses_fields: false
++      row:
++        type: 'entity:profile'
++        options:
++          relationship: none
++          view_mode: compact_teaser
++      fields:
++        rendered_entity:
++          table: profile
++          field: rendered_entity
++          id: rendered_entity
++          entity_type: null
++          entity_field: null
++          plugin_id: rendered_entity
++          relationship: none
++          group_type: group
++          admin_label: ''
++          label: ''
++          exclude: false
++          alter:
++            alter_text: false
++            text: ''
++            make_link: false
++            path: ''
++            absolute: false
++            external: false
++            replace_spaces: false
++            path_case: none
++            trim_whitespace: false
++            alt: ''
++            rel: ''
++            link_class: ''
++            prefix: ''
++            suffix: ''
++            target: ''
++            nl2br: false
++            max_length: 0
++            word_boundary: true
++            ellipsis: true
++            more_link: false
++            more_link_text: ''
++            more_link_path: ''
++            strip_tags: false
++            trim: false
++            preserve_tags: ''
++            html: false
++          element_type: ''
++          element_class: ''
++          element_label_type: ''
++          element_label_class: ''
++          element_label_colon: true
++          element_wrapper_type: ''
++          element_wrapper_class: ''
++          element_default_classes: true
++          empty: ''
++          hide_empty: false
++          empty_zero: false
++          hide_alter_empty: true
++          view_mode: default
++      filters:
++        type:
++          id: type
++          table: profile
++          field: type
++          value:
++            profile: profile
++          entity_type: profile
++          entity_field: type
++          plugin_id: bundle
++        group_roles_target_id:
++          id: group_roles_target_id
++          table: group_content__group_roles
++          field: group_roles_target_id
++          relationship: group_content
++          group_type: group
++          admin_label: ''
++          operator: '='
++          value: open_group-group_manager
++          group: 1
++          exposed: false
++          expose:
++            operator_id: ''
++            label: ''
++            description: ''
++            use_operator: false
++            operator: ''
++            identifier: ''
++            required: false
++            remember: false
++            multiple: false
++            remember_roles:
++              authenticated: authenticated
++          is_grouped: false
++          group_info:
++            label: ''
++            description: ''
++            identifier: ''
++            optional: true
++            widget: select
++            multiple: false
++            remember: false
++            default_group: All
++            default_group_multiple: {  }
++            group_items: {  }
++          plugin_id: string
++      sorts: {  }
++      header: {  }
++      footer: {  }
++      empty: {  }
++      relationships:
++        uid:
++          id: uid
++          table: profile
++          field: uid
++          relationship: none
++          group_type: group
++          admin_label: User
++          required: true
++          entity_type: profile
++          entity_field: uid
++          plugin_id: standard
++        group_content:
++          id: group_content
++          table: users_field_data
++          field: group_content
++          relationship: uid
++          group_type: group
++          admin_label: 'User group content'
++          required: true
++          group_content_plugins:
++            group_membership: group_membership
++          entity_type: user
++          plugin_id: group_content_to_entity_reverse
++      arguments:
++        gid:
++          id: gid
++          table: group_content_field_data
++          field: gid
++          relationship: group_content
++          group_type: group
++          admin_label: ''
++          default_action: default
++          exception:
++            value: all
++            title_enable: false
++            title: All
++          title_enable: false
++          title: ''
++          default_argument_type: group_id_from_url
++          default_argument_options: {  }
++          default_argument_skip_url: false
++          summary_options:
++            base_path: ''
++            count: true
++            items_per_page: 25
++            override: false
++          summary:
++            sort_order: asc
++            number_of_records: 0
++            format: default_summary
++          specify_validation: false
++          validate:
++            type: none
++            fail: 'not found'
++          validate_options: {  }
++          break_phrase: false
++          not: false
++          entity_type: group_content
++          entity_field: gid
++          plugin_id: group_id
++      display_extenders: {  }
++      title: 'Group managers'
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - group_membership.roles.permissions
++        - 'languages:language_interface'
++        - route
++        - url
++      tags:
++        - 'config:core.entity_view_display.profile.profile.autocomplete_item'
++        - 'config:core.entity_view_display.profile.profile.compact'
++        - 'config:core.entity_view_display.profile.profile.default'
++        - 'config:core.entity_view_display.profile.profile.hero'
++        - 'config:core.entity_view_display.profile.profile.search_index'
++        - 'config:core.entity_view_display.profile.profile.small'
++        - 'config:core.entity_view_display.profile.profile.small_teaser'
++        - 'config:core.entity_view_display.profile.profile.table'
++        - 'config:core.entity_view_display.profile.profile.teaser'
++  block_list_managers:
++    display_plugin: block
++    id: block_list_managers
++    display_title: 'Block List managers'
++    position: 1
++    display_options:
++      display_extenders: {  }
++      display_description: ''
++      block_hide_empty: true
++    cache_metadata:
++      max-age: -1
++      contexts:
++        - group_membership.roles.permissions
++        - 'languages:language_interface'
++        - route
++        - url
++      tags:
++        - 'config:core.entity_view_display.profile.profile.autocomplete_item'
++        - 'config:core.entity_view_display.profile.profile.compact'
++        - 'config:core.entity_view_display.profile.profile.default'
++        - 'config:core.entity_view_display.profile.profile.hero'
++        - 'config:core.entity_view_display.profile.profile.search_index'
++        - 'config:core.entity_view_display.profile.profile.small'
++        - 'config:core.entity_view_display.profile.profile.small_teaser'
++        - 'config:core.entity_view_display.profile.profile.table'
++        - 'config:core.entity_view_display.profile.profile.teaser'
+diff --git a/profiles/social/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml b/profiles/social/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml
+new file mode 100644
+index 0000000..08c555e
+--- /dev/null
++++ b/profiles/social/modules/social_features/social_group/config/optional/block.block.views_block__group_managers_block_list_managers.yml
+@@ -0,0 +1,37 @@
++langcode: en
++status: true
++dependencies:
++  config:
++    - views.view.group_managers
++  module:
++    - group
++    - system
++    - views
++  theme:
++    - socialblue
++id: views_block__group_managers_block_list_managers
++theme: socialblue
++region: content
++weight: -22
++provider: null
++plugin: 'views_block:group_managers-block_list_managers'
++settings:
++  id: 'views_block:group_managers-block_list_managers'
++  label: ''
++  provider: views
++  label_display: visible
++  views_label: ''
++  items_per_page: none
++visibility:
++  group_type:
++    id: group_type
++    group_types:
++      open_group: open_group
++    negate: false
++    context_mapping:
++      group: '@group.group_route_context:group'
++  request_path:
++    id: request_path
++    pages: '/group/*/about'
++    negate: false
++    context_mapping: {  }
+diff --git a/profiles/social/modules/social_features/social_group/social_group.info.yml b/profiles/social/modules/social_features/social_group/social_group.info.yml
+index e94f314..4cf52f7 100644
+--- a/profiles/social/modules/social_features/social_group/social_group.info.yml
++++ b/profiles/social/modules/social_features/social_group/social_group.info.yml
+@@ -16,9 +16,11 @@ dependencies:
+   - image_widget_crop
+   - node
+   - path
++  - profile
+   - social_core
+   - social_event
+   - social_group
++  - social_profile
+   - social_topic
+   - system
+   - taxonomy
+diff --git a/profiles/social/modules/social_features/social_group/social_group.module b/profiles/social/modules/social_features/social_group/social_group.module
+index 449e76f..9f4f825 100644
+--- a/profiles/social/modules/social_features/social_group/social_group.module
++++ b/profiles/social/modules/social_features/social_group/social_group.module
+@@ -571,3 +571,29 @@ function _social_group_cache_tags(GroupInterface $group) {
+ function social_group_block_view_local_tasks_block_alter(array &$build, BlockPluginInterface $block) {
+   $build['#cache']['contexts'][] = 'group_membership.roles.permissions';
+ }
++
++/**
++ * Implements hook_preprocess_HOOK().
++ */
++function social_group_preprocess_profile(&$variables) {
++  $group = _social_group_get_current_group();
++
++  if ($group instanceof Group && $variables['elements']['#view_mode'] == 'teaser') {
++    $account = $variables['elements']['#profile']->get('uid')->entity;
++
++    if (!$member = $group->getMember($account)) {
++      return;
++    }
++
++    $roles = $member->getRoles();
++
++    if (isset($roles[ $group->bundle() . '-group_manager' ])) {
++      $variables['badges'] = [
++        [
++          'label' => t('Group manager'),
++          'classes' => ['badge-secondary teaser__badge'],
++        ],
++      ];
++    }
++  }
++}
+diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml
+new file mode 100644
+index 0000000..9721b4e
+--- /dev/null
++++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_display.profile.profile.compact_teaser.yml
+@@ -0,0 +1,58 @@
++langcode: en
++status: true
++dependencies:
++  config:
++    - core.entity_view_mode.profile.compact_teaser
++    - field.field.profile.profile.field_profile_address
++    - field.field.profile.profile.field_profile_expertise
++    - field.field.profile.profile.field_profile_first_name
++    - field.field.profile.profile.field_profile_function
++    - field.field.profile.profile.field_profile_image
++    - field.field.profile.profile.field_profile_interests
++    - field.field.profile.profile.field_profile_last_name
++    - field.field.profile.profile.field_profile_organization
++    - field.field.profile.profile.field_profile_phone_number
++    - field.field.profile.profile.field_profile_profile_tag
++    - field.field.profile.profile.field_profile_self_introduction
++    - field.field.profile.profile.field_profile_show_email
++    - image.style.social_medium
++    - profile.type.profile
++  module:
++    - image
++id: profile.profile.compact_teaser
++targetEntityType: profile
++bundle: profile
++mode: compact_teaser
++content:
++  field_profile_function:
++    type: string
++    weight: 3
++    label: hidden
++    settings:
++      link_to_entity: false
++    third_party_settings: {  }
++  field_profile_image:
++    type: image
++    weight: 0
++    label: hidden
++    settings:
++      image_style: social_medium
++      image_link: ''
++    third_party_settings: {  }
++  field_profile_organization:
++    type: string
++    weight: 4
++    label: hidden
++    settings:
++      link_to_entity: false
++    third_party_settings: {  }
++hidden:
++  field_profile_address: true
++  field_profile_expertise: true
++  field_profile_first_name: true
++  field_profile_interests: true
++  field_profile_last_name: true
++  field_profile_phone_number: true
++  field_profile_profile_tag: true
++  field_profile_self_introduction: true
++  field_profile_show_email: true
+diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
+index 22e9b0e..0d2634b 100644
+--- a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
++++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact.yml
+@@ -4,6 +4,6 @@ dependencies:
+   module:
+     - profile
+ id: profile.compact
+-label: Compact
++label: 'Compact Avatar'
+ targetEntityType: profile
+ cache: true
+diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml
+new file mode 100644
+index 0000000..1fa04e8
+--- /dev/null
++++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.compact_teaser.yml
+@@ -0,0 +1,10 @@
++uuid: eeb521be-1fda-433c-a7b4-ef4f615a3f39
++langcode: en
++status: true
++dependencies:
++  module:
++    - profile
++id: profile.compact_teaser
++label: 'Compact Teaser'
++targetEntityType: profile
++cache: true
+diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
+index 57eadc5..6a87675 100644
+--- a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
++++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small.yml
+@@ -4,6 +4,6 @@ dependencies:
+   module:
+     - profile
+ id: profile.small
+-label: Small
++label: 'Small Avatar'
+ targetEntityType: profile
+ cache: true
+diff --git a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
+index 2ced97b..c46a828 100644
+--- a/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
++++ b/profiles/social/modules/social_features/social_profile/config/install/core.entity_view_mode.profile.small_teaser.yml
+@@ -4,6 +4,6 @@ dependencies:
+   module:
+     - profile
+ id: profile.small_teaser
+-label: 'Small teaser'
++label: 'Small Teaser'
+ targetEntityType: profile
+ cache: true
+diff --git a/profiles/social/tests/behat/features/capabilities/event-management/event-management.feature b/profiles/social/tests/behat/features/capabilities/event-management/event-management.feature
+index b0fca3a..7bf5707 100644
+--- a/profiles/social/tests/behat/features/capabilities/event-management/event-management.feature
++++ b/profiles/social/tests/behat/features/capabilities/event-management/event-management.feature
+@@ -2,35 +2,35 @@
+ Feature: Event Management
+   Benefit: In order to organise an event
+   Role: As a LU
+-  Goal/desire: I want to assign event managers
++  Goal/desire: I want to assign event organiser
+ 
+   @LU @perfect @critical
+-  Scenario: Successfully assign event managers
++  Scenario: Successfully assign event organiser
+     Given I enable the module "social_event_managers"
+     And users:
+       | name            | mail             | field_profile_organization | status |
+-      | event_manager_1 | em_1@example.com | GoalGorilla                | 1      |
+-      | event_manager_2 | em_2@example.com | Drupal                     | 1      |
++      | event_organiser_1 | eo_1@example.com | GoalGorilla                | 1      |
++      | event_organiser_2 | eo_2@example.com | Drupal                     | 1      |
+     And I am logged in as an "authenticated user"
+     And I am on "user"
+     And I click "Events"
+     And I click "Create Event"
+     When I fill in the following:
+-      | Title | This is an event with event managers |
++      | Title | This is an event with event organisers |
+       | Date | 2025-01-01 |
+       | Time | 11:00:00 |
+       | Location name | GG HQ |
+     And I fill in the "edit-body-0-value" WYSIWYG editor with "Body description text."
+-    And I fill in "event_manager_1" for "field_event_managers[0][target_id]"
++    And I fill in "event_organiser_1" for "field_event_managers[0][target_id]"
+     And I press "field_event_managers_add_more"
+     And I wait for AJAX to finish
+-    And I fill in "event_manager_2" for "field_event_managers[1][target_id]"
++    And I fill in "event_organiser_2" for "field_event_managers[1][target_id]"
+     And I press "Save"
+-    Then I should see "This is an event with event managers has been created."
+-    And I should see "THIS IS AN EVENT WITH EVENT MANAGERS"
++    Then I should see "This is an event with event organisers has been created."
++    And I should see "THIS IS AN EVENT WITH EVENT ORGANISERS"
+     And I should see "Body description text" in the "Main content"
+-    And I should see the link "Managers"
+-    And I should see "Event Managers"
++    And I should see "Organisers"
++    And I should not see the link "All Organisers"
+ 
+     # Create event in group.
+     Given I am on "all-groups"
+@@ -40,40 +40,40 @@ Feature: Event Management
+     And I click "Events"
+     And I click "Create Event"
+     When I fill in the following:
+-      | Title | This is an event with event managers in group |
++      | Title | This is an event with event organisers in group |
+       | Date | 2025-01-01 |
+       | Time | 11:00:00 |
+       | Location name | GG HQ |
+     And I fill in the "edit-body-0-value" WYSIWYG editor with "Body description text."
+-    And I fill in "event_manager_1" for "field_event_managers[0][target_id]"
++    And I fill in "event_organiser_1" for "field_event_managers[0][target_id]"
+     And I press "field_event_managers_add_more"
+     And I wait for AJAX to finish
+-    And I fill in "event_manager_2" for "field_event_managers[1][target_id]"
++    And I fill in "event_organiser_2" for "field_event_managers[1][target_id]"
+     And I press "Save and publish"
+-    And I should see "This is an event with event managers in group"
++    And I should see "This is an event with event organisers in group"
+ 
+-    # Now test with event_manager_1
++    # Now test with event_organiser_1
+     Given I logout
+-    And I am logged in as "event_manager_1"
+-    And I open the "event" node with title "This is an event with event managers"
++    And I am logged in as "event_organiser_1"
++    And I open the "event" node with title "This is an event with event organisers"
+     And I click "Edit content"
+     Then I should see "Save and keep published"
+     And I should not see "Authoring information"
+ 
+-    Given I open the "event" node with title "This is an event with event managers in group"
++    Given I open the "event" node with title "This is an event with event organisers in group"
+     And I click "Edit content"
+     Then I should see "Save and keep published"
+     And I should not see "Authoring information"
+ 
+-    # Now test with event_manager_2
++    # Now test with event_organiser_2
+     Given I logout
+-    And I am logged in as "event_manager_2"
+-    And I open the "event" node with title "This is an event with event managers"
++    And I am logged in as "event_organiser_2"
++    And I open the "event" node with title "This is an event with event organisers"
+     And I click "Edit content"
+     Then I should see "Save and keep published"
+     And I should not see "Authoring information"
+ 
+-    Given I open the "event" node with title "This is an event with event managers in group"
++    Given I open the "event" node with title "This is an event with event organisers in group"
+     And I click "Edit content"
+     Then I should see "Save and keep published"
+     And I should not see "Authoring information"
+@@ -83,4 +83,4 @@ Feature: Event Management
+       | title                   | body          |
+       | Topic regression test   | Description   |
+     And I open the "topic" node with title "Topic regression test"
+-    Then I should not see the link "Managers"
++    Then I should not see "Organisers"
+diff --git a/profiles/social/themes/socialbase/assets/css/group-managers.css b/profiles/social/themes/socialbase/assets/css/group-managers.css
+new file mode 100644
+index 0000000..a7101df
+--- /dev/null
++++ b/profiles/social/themes/socialbase/assets/css/group-managers.css
+@@ -0,0 +1,21 @@
++.view--group-managers .card__block {
++  padding: 0;
++}
++@media (min-width: 900px) {
++  .view--group-managers {
++    display: -webkit-box;
++    display: -ms-flexbox;
++    display: flex;
++    -ms-flex-wrap: wrap;
++    flex-wrap: wrap;
++    -webkit-box-pack: justify;
++    -ms-flex-pack: justify;
++    justify-content: space-between;
++    padding: 1.25rem;
++  }
++  .view--group-managers .card__block {
++    -webkit-box-flex: 0;
++    -ms-flex: 0 0 48%;
++    flex: 0 0 48%;
++  }
++}
+diff --git a/profiles/social/themes/socialbase/assets/css/list.css b/profiles/social/themes/socialbase/assets/css/list.css
+index 8efee72..eae6911 100644
+--- a/profiles/social/themes/socialbase/assets/css/list.css
++++ b/profiles/social/themes/socialbase/assets/css/list.css
+@@ -5,12 +5,10 @@
+   -webkit-box-pack: center;
+       -ms-flex-pack: center;
+           justify-content: center;
+-  -webkit-box-align: center;
+-      -ms-flex-align: center;
+-          align-items: center;
+   width: 100%;
+   padding-top: 0.625rem;
+   padding-bottom: 0.625rem;
++  min-width: 0;
+ }
+ 
+ .list-item__avatar {
+@@ -21,6 +19,7 @@
+           flex: 0 0 24px;
+   margin-right: 10px;
+   border-radius: 50%;
++  margin-top: 2px;
+ }
+ 
+ .list-item__avatar--medium {
+@@ -41,9 +40,10 @@
+ 
+ .list-item__text {
+   -webkit-box-flex: 1;
+-      -ms-flex: 1 1 auto;
+-          flex: 1 1 auto;
++      -ms-flex-positive: 1;
++          flex-grow: 1;
+   margin: 0;
++  line-height: 1.25;
+ }
+ 
+ .list-item__text p {
+diff --git a/profiles/social/themes/socialbase/assets/css/meta.css b/profiles/social/themes/socialbase/assets/css/meta.css
+index 98b4019..a16642e 100644
+--- a/profiles/social/themes/socialbase/assets/css/meta.css
++++ b/profiles/social/themes/socialbase/assets/css/meta.css
+@@ -115,8 +115,8 @@
+   }
+ 
+   .meta-follow {
+-    -ms-flex-preferred-size: 0;
+-    flex-basis: 0;
++    -ms-flex-preferred-size: auto;
++    flex-basis: auto;
+     -webkit-box-ordinal-group: 11;
+     -ms-flex-order: 10;
+     order: 10;
+diff --git a/profiles/social/themes/socialbase/assets/css/teaser.css b/profiles/social/themes/socialbase/assets/css/teaser.css
+index 3f66e60..fdf20f6 100644
+--- a/profiles/social/themes/socialbase/assets/css/teaser.css
++++ b/profiles/social/themes/socialbase/assets/css/teaser.css
+@@ -62,10 +62,9 @@
+ }
+ 
+ .teaser__content-line {
+-  display: block;
+-  overflow: hidden;
+-  white-space: nowrap;
+-  text-overflow: ellipsis;
++  display: -webkit-box;
++  display: -ms-flexbox;
++  display: flex;
+   max-width: 100%;
+   font-size: 0.875rem;
+ }
+@@ -73,41 +72,45 @@
+ .teaser__content-type-icon {
+   width: 14px;
+   height: 14px;
+-  line-height: 16px;
+-  display: inline-block;
+-  vertical-align: middle;
++  -webkit-box-flex: 0;
++      -ms-flex: 0 0 14px;
++          flex: 0 0 14px;
++  line-height: 21px;
++  margin-top: 3px;
+   fill: #555555;
+   margin-right: 12px;
+ }
+ 
+ .teaser__content-text {
+-  vertical-align: middle;
+-  line-height: 1;
+-  margin-right: 5px;
+-  display: inline;
++  line-height: 21px;
++  -webkit-box-flex: 1;
++      -ms-flex-positive: 1;
++          flex-grow: 1;
++  text-overflow: ellipsis;
++  overflow-x: hidden;
++  white-space: nowrap;
+ }
+ 
+ .teaser__published {
+-  display: -webkit-inline-box;
+-  display: -ms-inline-flexbox;
+-  display: inline-flex;
+-  width: 85%;
++  display: -webkit-box;
++  display: -ms-flexbox;
++  display: flex;
++  min-width: 0;
+ }
+ 
+ .teaser__published-author {
+-  -webkit-box-flex: 0;
+-      -ms-flex: 0 1 auto;
+-          flex: 0 1 auto;
++  -webkit-box-flex: 1;
++      -ms-flex-positive: 1;
++          flex-grow: 1;
++  text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+-  text-overflow: ellipsis;
+-  margin-right: 4px;
+ }
+ 
+ .teaser__published-date {
+-  -webkit-box-flex: 1;
+-      -ms-flex: 1 1 auto;
+-          flex: 1 1 auto;
++  -ms-flex-negative: 0;
++      flex-shrink: 0;
++  margin-right: 4px;
+ }
+ 
+ .teaser__badge {
+diff --git a/profiles/social/themes/socialbase/components/02-atoms/list/list.scss b/profiles/social/themes/socialbase/components/02-atoms/list/list.scss
+index e784a77..64dac89 100644
+--- a/profiles/social/themes/socialbase/components/02-atoms/list/list.scss
++++ b/profiles/social/themes/socialbase/components/02-atoms/list/list.scss
+@@ -37,10 +37,10 @@
+ .list-item {
+   display: flex;
+   justify-content: center;
+-  align-items: center;
+   width: 100%;
+   padding-top: ($card-spacer-x/2);
+   padding-bottom: ($card-spacer-x/2);
++  min-width: 0;
+ }
+ 
+ .list-item__avatar {
+@@ -49,6 +49,7 @@
+   flex: 0 0 24px;
+   margin-right: 10px;
+   border-radius: 50%;
++  margin-top: 2px; // vertical alignment
+ }
+ 
+ .list-item__avatar--medium {
+@@ -68,8 +69,9 @@
+ }
+ 
+ .list-item__text {
+-  flex: 1 1 auto;
++  flex-grow: 1;
+   margin: 0;
++  line-height: 1.25;
+ 
+   p {
+     margin-bottom: 0;
+diff --git a/profiles/social/themes/socialbase/components/03-molecules/teaser/teaser.scss b/profiles/social/themes/socialbase/components/03-molecules/teaser/teaser.scss
+index c6db5be..0ba1c29 100644
+--- a/profiles/social/themes/socialbase/components/03-molecules/teaser/teaser.scss
++++ b/profiles/social/themes/socialbase/components/03-molecules/teaser/teaser.scss
+@@ -115,12 +115,9 @@
+   position: relative;
+ }
+ 
+-// A line of content giving information about the content. Will always be cut off after one line
++// A line of content giving information about the content.
+ .teaser__content-line {
+-  display: block;
+-  overflow: hidden;
+-  white-space: nowrap;
+-  text-overflow: ellipsis;
++  display: flex;
+   max-width: 100%;
+   font-size: 0.875rem;
+ }
+@@ -129,39 +126,41 @@
+ .teaser__content-type-icon {
+   width: 14px;
+   height: 14px;
+-  line-height: 16px;
+-  display: inline-block;
+-  vertical-align: middle;
++  flex: 0 0 14px;
++  line-height: 21px;
++  margin-top: 3px; // vertical alignment
+   fill: $gray;
+   margin-right: 12px;
+ }
+ 
+-// text displaying next to the icon
++// Will always be cut off after one line
+ .teaser__content-text {
+-  vertical-align: middle;
+-  line-height: 1;
+-  margin-right: 5px;
+-  display: inline;
++  line-height: 21px;
++  flex-grow: 1;
++  text-overflow: ellipsis;
++  overflow-x: hidden;
++  white-space: nowrap;
+ }
+ 
++
+ // Custom styling for publication info of a node, because it needs to be combined at one line next to the content type icon
+ .teaser__published {
+-  display: inline-flex;
+-  width: 85%;
++  display: flex;
++  min-width: 0; // critical to prevent children from growing
+ }
+ 
+-// The author name should be able to truncate when the space is limited: flex-grow: 0
++// The author name should be able to truncate when the space is limited
+ .teaser__published-author {
+-  flex: 0 1 auto;
++  flex-grow: 1;
++  text-overflow: ellipsis;
+   overflow: hidden;
+   white-space: nowrap;
+-  text-overflow: ellipsis;
+-  margin-right: 4px;
+ }
+ 
+-// The published date should be shown completely when the space is limited: flex-grow: 1
++// The published date should be shown completely when the space is limited
+ .teaser__published-date {
+-  flex: 1 1 auto;
++  flex-shrink: 0;
++  margin-right: 4px;
+ }
+ 
+ // Reset margin so the items in the actionbar are vertically aligned.
+diff --git a/profiles/social/themes/socialbase/components/04-organisms/group/group-managers.scss b/profiles/social/themes/socialbase/components/04-organisms/group/group-managers.scss
+new file mode 100644
+index 0000000..7047e51
+--- /dev/null
++++ b/profiles/social/themes/socialbase/components/04-organisms/group/group-managers.scss
+@@ -0,0 +1,19 @@
++@import 'settings';
++
++.view--group-managers {
++  @include for-tablet-landscape-up {
++    display: flex;
++    flex-wrap: wrap;
++    justify-content: space-between;
++    padding: 1.25rem;
++
++    .card__block {
++      flex: 0 0 48%;
++    }
++  }
++
++  .card__block {
++    padding: 0;
++  }
++
++}
+\ No newline at end of file
+diff --git a/profiles/social/themes/socialbase/components/04-organisms/meta/meta.scss b/profiles/social/themes/socialbase/components/04-organisms/meta/meta.scss
+index 232b829..8c83a62 100644
+--- a/profiles/social/themes/socialbase/components/04-organisms/meta/meta.scss
++++ b/profiles/social/themes/socialbase/components/04-organisms/meta/meta.scss
+@@ -72,7 +72,7 @@
+   margin-bottom: 1rem;
+ 
+   @include for-tablet-portrait-up {
+-    flex-basis: 0;
++    flex-basis: auto;
+     order: 10;
+     margin-bottom: 0;
+   }
+diff --git a/profiles/social/themes/socialbase/includes/block.inc b/profiles/social/themes/socialbase/includes/block.inc
+index 58f71cb..868862b 100644
+--- a/profiles/social/themes/socialbase/includes/block.inc
++++ b/profiles/social/themes/socialbase/includes/block.inc
+@@ -92,6 +92,10 @@ function socialbase_preprocess_block(&$variables) {
+ 
+   }
+ 
++  // Show group managers block in a card
++  if ($variables['elements']['#derivative_plugin_id'] == 'group_managers-block_list_managers') {
++    $variables['card'] = TRUE;
++  }
+   // for all platform_intro blocks we want them to appear as cards.
+   if (isset($variables['elements']['content']['#block_content'])) {
+     if ($variables['elements']['content']['#block_content']->bundle() == 'platform_intro') {
+diff --git a/profiles/social/themes/socialbase/includes/input.inc b/profiles/social/themes/socialbase/includes/input.inc
+index 8ea77c3..a15cdb9 100644
+--- a/profiles/social/themes/socialbase/includes/input.inc
++++ b/profiles/social/themes/socialbase/includes/input.inc
+@@ -18,6 +18,11 @@ function socialbase_preprocess_input(&$variables) {
+     }
+   }
+ 
++  // set "add more managers" button style
++  if (isset($variables['element']['#array_parents']) && in_array('add_more', $variables['element']['#array_parents'], TRUE) && $variables['type'] == 'submit') {
++    $variables['button_type'] = 'flat';
++  }
++
+   if (isset($variables['element']['#array_parents'])) {
+     if (in_array('save_modal', $variables['element']['#array_parents'], TRUE)) {
+       $variables['button_type'] = 'primary';
+diff --git a/profiles/social/themes/socialbase/includes/views.inc b/profiles/social/themes/socialbase/includes/views.inc
+index 4f8e527..c15bb1f 100644
+--- a/profiles/social/themes/socialbase/includes/views.inc
++++ b/profiles/social/themes/socialbase/includes/views.inc
+@@ -31,4 +31,8 @@ function socialbase_theme_suggestions_views_view_alter(array &$suggestions, arra
+   ) {
+     $suggestions[] = $variables['theme_hook_original'] . '__stream';
+   }
++
++  if (isset($view_id) && $view_id == 'group_managers') {
++    $suggestions[] = $variables['theme_hook_original'] . '__group_managers';
++  }
+ }
+diff --git a/profiles/social/themes/socialbase/socialbase.libraries.yml b/profiles/social/themes/socialbase/socialbase.libraries.yml
+index 23262d0..61323a3 100644
+--- a/profiles/social/themes/socialbase/socialbase.libraries.yml
++++ b/profiles/social/themes/socialbase/socialbase.libraries.yml
+@@ -210,6 +210,11 @@ comment:
+     component:
+       assets/css/comment.css: {}
+ 
++group-managers:
++  css:
++    component:
++      assets/css/group-managers.css: {}
++
+ hero:
+   css:
+     component:
+diff --git a/profiles/social/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig b/profiles/social/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig
+new file mode 100644
+index 0000000..e816076
+--- /dev/null
++++ b/profiles/social/themes/socialbase/templates/block/block--views-block--group-managers-block-list-managers.html.twig
+@@ -0,0 +1,2 @@
++{% extends "block--card.html.twig" %}
++{% set title_attributes = title_attributes.addClass('align-center') %}
+\ No newline at end of file
+diff --git a/profiles/social/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig b/profiles/social/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
+index a76802f..7d062b6 100644
+--- a/profiles/social/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
++++ b/profiles/social/themes/socialbase/templates/node/topic/node--topic--teaser.html.twig
+@@ -16,8 +16,8 @@
+     {%- block field_icon -%} account_circle {%- endblock -%}
+     {%- block field_value %}
+       <div class="teaser__published">
++        <div class="teaser__published-date"> {{ date }} &bullet; </div>
+         <div class="teaser__published-author"> {{ author_name }} </div>
+-        <div class="teaser__published-date"> &bullet; {{ date }} </div>
+       </div>
+     {%- endblock -%}
+   {% endembed %}
+diff --git a/profiles/social/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig b/profiles/social/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig
+new file mode 100644
+index 0000000..bf355f5
+--- /dev/null
++++ b/profiles/social/themes/socialbase/templates/profile/profile--profile--compact_teaser.html.twig
+@@ -0,0 +1,43 @@
++{#
++/**
++ * @file
++ *
++ * Default theme implementation for profiles.
++ *
++ * Available variables:
++ * - content: Items for the content of the profile.
++ *   Use 'content' to print them all, or print a subset such as
++ *   'content.title'. Use the following code to exclude the
++ *   printing of a given child element:
++ *   @code
++ *   {{ content|without('title') }}
++ *   @endcode
++ * - attributes: HTML attributes for the wrapper.
++ * - profile: The profile object.
++ * - url: The profile URL.
++ *
++ * @ingroup themeable
++ */
++#}
++{{ attach_library('socialbase/teaser') }}
++<div class="card__block card__block--list">
++  <div class="card__text list-item">
++
++    <a href="{{ profile_stream_url }}" class="list-item__avatar list-item__avatar--medium">
++      {{ content.field_profile_image }}
++    </a>
++
++    <div class="list-item__text">
++      <a href="{{ profile_stream_url }}" title="{{ 'View Profile'|t }}">{{ profile_name|render }}</a>
++
++      {% if content.field_profile_function|render and content.field_profile_organization|render %} <br /> {% endif %}
++      {{content.field_profile_function}}
++
++      {% if content.field_profile_function|render and content.field_profile_organization|render %} &bullet; {% endif %}
++
++      {{ content.field_profile_organization }}
++
++    </div>
++
++  </div>
++</div>
+diff --git a/profiles/social/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig b/profiles/social/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig
+new file mode 100644
+index 0000000..b916405
+--- /dev/null
++++ b/profiles/social/themes/socialbase/templates/profile/profile--profile--medium_teaser.html.twig
+@@ -0,0 +1,45 @@
++{#
++/**
++ * @file
++ *
++ * Default theme implementation for profiles.
++ *
++ * Available variables:
++ * - content: Items for the content of the profile.
++ *   Use 'content' to print them all, or print a subset such as
++ *   'content.title'. Use the following code to exclude the
++ *   printing of a given child element:
++ *   @code
++ *   {{ content|without('title') }}
++ *   @endcode
++ * - attributes: HTML attributes for the wrapper.
++ * - profile: The profile object.
++ * - url: The profile URL.
++ *
++ * @ingroup themeable
++ */
++#}
++
++
++<div class="card__block card__block--list">
++
++  <a href="{{ profile_stream_url }}" class="card__text list-item">
++    <span class="list-item__avatar">
++      {{ content.field_profile_image }}
++    </span>
++
++    <span class="list-item__text">
++      {{ profile_name|render }}
++    </span>
++
++  </a>
++
++  <div class="list-item__organization">
++    {{ content.field_profile_organization }}
++  </div>
++
++  <div class="list-item__function">
++    {{ content.field_profile_function }}
++  </div>
++
++</div>
+diff --git a/profiles/social/themes/socialbase/templates/profile/profile--profile--teaser.html.twig b/profiles/social/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
+index fa63f0b..f7a160d 100644
+--- a/profiles/social/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
++++ b/profiles/social/themes/socialbase/templates/profile/profile--profile--teaser.html.twig
+@@ -48,11 +48,18 @@
+         </div>
+         {% endif %}
+ 
+-        {% if content.field_profile_profile_tag['#items'] %}
+-          {% for item in content.field_profile_profile_tag['#items'] %}
+-            <div class="badge" style="margin-left: 30px;">{{ item.entity.label }}</div>
+-          {% endfor %}
++        {% if content.field_profile_profile_tag['#items'] or badges %}
++          <div style="margin-left: 30px; margin-top: 5px;">
++            {% for badge in badges %}
++              {% set badge_classes = badge.classes|merge(['badge']) %}
++              <div{{ attributes.addClass(badge_classes) }}>{{ badge.label }}</div>
++            {% endfor %}
++            {% for item in content.field_profile_profile_tag['#items'] %}
++              <div class="badge badge-default">{{ item.entity.label }}</div>
++            {% endfor %}
++          </div>
+         {% endif %}
++
+     </div>
+ 
+     <div class="card__actionbar">
+diff --git a/profiles/social/themes/socialbase/templates/views/views-view--group-managers.html.twig b/profiles/social/themes/socialbase/templates/views/views-view--group-managers.html.twig
+new file mode 100644
+index 0000000..736a5ff
+--- /dev/null
++++ b/profiles/social/themes/socialbase/templates/views/views-view--group-managers.html.twig
+@@ -0,0 +1,23 @@
++{#
++/**
++ * @file
++ * Socialbase theme implementation to display a view of group managers.
++ *
++ * Available variables:
++ * - title: The title of this group of rows. May be empty.
++ * - rows: A list of the view's row items.
++ *   - attributes: The row's HTML attributes.
++ *   - content: The row's content.
++ * - view: The view object.
++ * - default_row_class: A flag indicating whether default classes should be
++ *   used on rows.
++ *
++ * @see template_preprocess_views_view_unformatted()
++ *
++ * @ingroup themeable
++ */
++#}
++{{ attach_library('socialbase/group-managers') }}
++<div class="view--group-managers">
++  {{ rows }}
++</div>
