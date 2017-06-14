@@ -1,0 +1,43 @@
+diff --git a/themes/socialbase/includes/block.inc b/themes/socialbase/includes/block.inc
+index 868862b..583f8d3 100644
+--- a/themes/socialbase/includes/block.inc
++++ b/themes/socialbase/includes/block.inc
+@@ -39,6 +39,10 @@ function socialbase_theme_suggestions_block_alter(array &$suggestions, array $va
+   if (in_array($block_id, $blocks_id)) {
+     $suggestions = array($variables['theme_hook_original'] . '__' . 'views_block__sidebar');
+   }
++
++  if (isset($variables['elements']['kpi_analytics'])) {
++    $suggestions = array($variables['theme_hook_original'] . '__' . 'charts');
++  }
+ }
+ 
+ /**
+@@ -92,6 +96,10 @@ function socialbase_preprocess_block(&$variables) {
+ 
+   }
+ 
++  if (isset($variables['elements']['kpi_analytics'])) {
++    $variables['card'] = TRUE;
++  }
++
+   // Show group managers block in a card
+   if ($variables['elements']['#derivative_plugin_id'] == 'group_managers-block_list_managers') {
+     $variables['card'] = TRUE;
+diff --git a/themes/socialbase/socialbase.libraries.yml b/themes/socialbase/socialbase.libraries.yml
+index 61323a3..738045f 100644
+--- a/themes/socialbase/socialbase.libraries.yml
++++ b/themes/socialbase/socialbase.libraries.yml
+@@ -271,3 +271,12 @@ page-preview:
+   css:
+     layout:
+       assets/css/page-preview.css: {}
++
++### 2.5 Libraries
++charts:
++  css:
++    component:
++      assets/css/morrisjs.css: {}
++  js:
++    assets/js/morris.min.js: {}
++    assets/js/raphael.min.js: {}
