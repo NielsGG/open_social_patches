@@ -41,3 +41,18 @@ index 61323a3..738045f 100644
 +  js:
 +    assets/js/morris.min.js: {}
 +    assets/js/raphael.min.js: {}
+diff --git a/themes/socialbase/templates/block/block--charts.html.twig b/themes/socialbase/templates/block/block--charts.html.twig
+new file mode 100644
+index 000000000..3f99ee606
+--- /dev/null
++++ b/themes/socialbase/templates/block/block--charts.html.twig
+@@ -0,0 +1,9 @@
++{% extends 'block.html.twig' %}
++
++{% block content %}
++  {{ attach_library('socialbase/charts')}}
++
++  <div class="card__block">
++    {{ content }}
++  </div>
++{% endblock %}
