@@ -1,0 +1,105 @@
+diff --git a/modules/social_admin_notifications/config/install/message.template.create_comment_platform.yml b/modules/social_admin_notifications/config/install/message.template.create_comment_platform.yml
+index f6ae91b..d29075e 100644
+--- a/modules/social_admin_notifications/config/install/message.template.create_comment_platform.yml
++++ b/modules/social_admin_notifications/config/install/message.template.create_comment_platform.yml
+@@ -21,13 +21,13 @@ description: 'A new comment created in the platform'
+ text:
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">comment</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">comment</a> in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">comment</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">comment</a> in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">comment</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">comment</a> in the platform</p>'
+ settings:
+   'token options':
+     clear: false
+diff --git a/modules/social_admin_notifications/config/install/message.template.create_group_platform.yml b/modules/social_admin_notifications/config/install/message.template.create_group_platform.yml
+index 9d040d9..3e3932d 100644
+--- a/modules/social_admin_notifications/config/install/message.template.create_group_platform.yml
++++ b/modules/social_admin_notifications/config/install/message.template.create_group_platform.yml
+@@ -18,13 +18,13 @@ description: 'A new group created in the platform'
+ text:
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a group in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a group in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a group in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a group in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a group in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a group in the platform</p>'
+ settings:
+   'token options':
+     clear: false
+diff --git a/modules/social_admin_notifications/config/install/message.template.create_node_platform.yml b/modules/social_admin_notifications/config/install/message.template.create_node_platform.yml
+index 26afd9d..4e38f86 100644
+--- a/modules/social_admin_notifications/config/install/message.template.create_node_platform.yml
++++ b/modules/social_admin_notifications/config/install/message.template.create_node_platform.yml
+@@ -19,13 +19,13 @@ description: 'A new content (topic or event) created in the platform'
+ text:
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">content</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">content</a> in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">content</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">content</a> in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">content</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">content</a> in the platform</p>'
+ settings:
+   'token options':
+     clear: false
+diff --git a/modules/social_admin_notifications/config/install/message.template.create_post_platform.yml b/modules/social_admin_notifications/config/install/message.template.create_post_platform.yml
+index d5f986e..3ef62f9 100644
+--- a/modules/social_admin_notifications/config/install/message.template.create_post_platform.yml
++++ b/modules/social_admin_notifications/config/install/message.template.create_post_platform.yml
+@@ -18,13 +18,13 @@ description: 'A new post created in the platform'
+ text:
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">post</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">post</a> in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">post</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">post</a> in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">post</a> in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created a <a href="[message:field_message_related_object:entity:url:absolute]">post</a> in the platform</p>'
+ settings:
+   'token options':
+     clear: false
+diff --git a/modules/social_admin_notifications/config/install/message.template.create_user_platform.yml b/modules/social_admin_notifications/config/install/message.template.create_user_platform.yml
+index baf47c0..de83482 100644
+--- a/modules/social_admin_notifications/config/install/message.template.create_user_platform.yml
++++ b/modules/social_admin_notifications/config/install/message.template.create_user_platform.yml
+@@ -18,13 +18,13 @@ description: 'A new user created in the platform'
+ text:
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created profile in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created profile in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created profile in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created profile in the platform</p>'
+   -
+     format: full_html
+-    value: '<p><a href="[message:author:url:relative]">[message:author:display-name]</a> created profile in the platform</p>'
++    value: '<p><a href="[message:author:url:absolute]">[message:author:display-name]</a> created profile in the platform</p>'
+ settings:
+   'token options':
+     clear: false
