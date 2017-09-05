@@ -1,0 +1,23 @@
+diff --git a/modules/social_features/social_profile/social_profile.install b/modules/social_features/social_profile/social_profile.install
+index 5f8272a..19185fb 100644
+--- a/modules/social_features/social_profile/social_profile.install
++++ b/modules/social_features/social_profile/social_profile.install
+@@ -251,18 +251,4 @@ function social_profile_update_8005() {
+  * Create a profile for users that have none.
+  */
+ function social_profile_update_8006() {
+-  /** @var \Drupal\user\Entity\User $account */
+-  foreach (User::loadMultiple() as $account) {
+-    // For anonymous we do nothing.
+-    if ($account->isAnonymous()) {
+-      continue;
+-    }
+-    // Check if the user has a profile already.
+-    if (!$profile = \Drupal::entityTypeManager()->getStorage('profile')->loadByUser($account, ProfileType::load('profile')->id(), TRUE)) {
+-      Profile::create([
+-        'type' => ProfileType::load('profile')->id(),
+-        'uid' => $account->id(),
+-      ])->save();
+-    }
+-  }
+ }
